@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -16,8 +15,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.HashMap;
-import java.util.Map;
+import dupd.com.smartbag.Entities.RFIDEntity;
 
 /**
  * Created by Dhaval on 04-11-2018.
@@ -42,21 +40,14 @@ public class ExampleDialog extends AppCompatDialogFragment {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                                    bag receiveBag =
-                                    bag b = new bag();
-                                    HashMap<String, bag> hm = (HashMap<String, bag>) ds.getValue();
-                                    for (Map.Entry<String, bag> entry : hm.entrySet()) {
-                                        System.out.println("key" + entry.getKey() + entry.getValue());
+                                    RFIDEntity receiveRFIDEntity = ds.getValue(RFIDEntity.class);
+                                    RFIDEntity b = new RFIDEntity();
+                                    b.setBookName(name.getText().toString());
+                                    b.setInBag(receiveRFIDEntity.getInBag());
+                                    System.out.println("val" + b);
+                                    myRef.setValue(b);
+                                }
 
-                                        if (entry.getKey().equals("Book Name")) {
-                                            b.setBookname(name.getText().toString());
-                                            System.out.println("val" + entry.getValue());
-                                        } else {
-                                            b.setInBag(entry.getValue());
-                                            System.out.println("val" + entry.getValue());
-                                        }
-                                    }
-                                    myRef.child(ds.getKey()).setValue(b);
                                     /*System.out.println("further"+ds.getValue());
                                     DatabaseReference ref1 = myRef.child(ds.getValue().toString());
                                     for(DataSnapshot d :ds.getChildren())
@@ -72,7 +63,6 @@ public class ExampleDialog extends AppCompatDialogFragment {
                                     }*/
 
                                 }
-                            }
 
 
                             @Override
