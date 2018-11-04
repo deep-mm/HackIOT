@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.MainActivity"></activity>
+        <activity android:name=".Activity.MainActivity" />
         <activity
             android:name=".Activity.TodayActivity"
             android:label="@string/title_activity_today"
@@ -20,7 +20,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.TimeTable"></activity>
+        <activity android:name=".Activity.TimeTable" />
+        <activity android:name=".Activity.AddNew"></activity>
     </application>
 
 </manifest>
