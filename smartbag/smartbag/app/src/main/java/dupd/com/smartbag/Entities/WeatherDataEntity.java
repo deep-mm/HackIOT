@@ -10,6 +10,9 @@ public class WeatherDataEntity {
         Humidity = humidity;
     }
 
+    public WeatherDataEntity() {
+    }
+
     public String getTemperature() {
         return Temperature;
     }

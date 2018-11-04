@@ -1,4 +1,4 @@
-package dupd.com.smartbag;
+package dupd.com.smartbag.Activity;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -12,6 +12,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import dupd.com.smartbag.R;
 
 public class TodayActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {

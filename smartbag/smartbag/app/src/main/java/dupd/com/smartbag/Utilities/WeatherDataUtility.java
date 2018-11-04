@@ -42,7 +42,7 @@ public class WeatherDataUtility {
             childEventListener = new ChildEventListener() {
                 @Override
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                    weatherDataEntities.add(dataSnapshot.getValue(WeatherDataEntity.class));
+                        weatherDataEntities.add(dataSnapshot.getValue(WeatherDataEntity.class));
                 }
 
                 @Override
