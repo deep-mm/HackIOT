@@ -24,7 +24,7 @@ public class BagAdapter extends RecyclerView.Adapter<BagAdapter.MyViewHolder>{
         View view = (View) LayoutInflater.from(parent.getContext()).inflate(R.layout.bagfragment,parent,false);
         return new MyViewHolder(view);
     }
-    BagAdapter(List<RFIDEntity>rfid)
+    public BagAdapter(List<RFIDEntity>rfid)
     {
         this.rfid = rfid;
         System.out.println("rfid3"+rfid);
