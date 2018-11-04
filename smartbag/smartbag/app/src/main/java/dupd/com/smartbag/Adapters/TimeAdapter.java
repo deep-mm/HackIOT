@@ -1,4 +1,4 @@
-package dupd.com.smartbag.Activity;
+package dupd.com.smartbag.Adapters;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -8,10 +8,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import dupd.com.smartbag.Entities.RFIDEntity;
-import dupd.com.smartbag.Entities.TimeTableEntity;
 import dupd.com.smartbag.R;
 
 public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.MyViewHolder> {

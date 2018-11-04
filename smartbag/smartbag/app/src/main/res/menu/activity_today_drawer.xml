@@ -6,20 +6,16 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/today"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@mipmap/today"
             android:title="Today" />
         <item
             android:id="@+id/timetable"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="TimeTAble" />
+            android:icon="@drawable/timetable"
+            android:title="TimeTable" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Sign Out" />
+            android:id="@+id/newBook"
+            android:icon="@drawable/addnew"
+            android:title="Add New Book" />
     </group>
 
 

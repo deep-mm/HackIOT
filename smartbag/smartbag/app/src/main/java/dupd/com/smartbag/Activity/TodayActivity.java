@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 import java.util.List;
 
+import dupd.com.smartbag.Adapters.BagAdapter;
 import dupd.com.smartbag.Entities.RFIDEntity;
 import dupd.com.smartbag.Listners.OnRFIDEntityChangeListener;
 import dupd.com.smartbag.R;
@@ -95,7 +96,6 @@ public class TodayActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.today, menu);
         return true;
     }
 
