@@ -105,6 +105,7 @@ public class TodayActivity extends AppCompatActivity
             // Handle the camera action
         } else if (id == R.id.timetable) {
 
+
         } else if (id == R.id.add_book) {
             Intent intent = new Intent(TodayActivity.this,AddNew.class);
             startActivity(intent);

@@ -24,6 +24,7 @@ public class AddNew extends AppCompatActivity {
     Button submit;
     String selected;
     int inbag;
+    String[] arraySpinner;
     List<RFIDEntity> rfid = new ArrayList<RFIDEntity>();
 
     @Override
@@ -38,25 +39,26 @@ public class AddNew extends AppCompatActivity {
             public void OnDataChenged(List<RFIDEntity> newRFIDEntity) {
                 rfid =newRFIDEntity;
                 System.out.println("rfid"+rfid);
+                arraySpinner = new String[rfid.size()];
+                for(int i=0;i<rfid.size();i++)
+                {
+                    arraySpinner[i] = rfid.get(i).getId().toString();
+                }
 
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),
+                        android.R.layout.simple_spinner_item, arraySpinner);
+                adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+                spinner.setAdapter(adapter);
             }
         });
-        String[] arraySpinner = new String[rfid.size()];
-        for(int i=0;i<rfid.size();i++)
-        {
-            arraySpinner[i] = rfid.get(i).getId();
-        }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),
-                android.R.layout.simple_spinner_item, arraySpinner);
-        adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        selected = spinner.getSelectedItem().toString();
+
+    //    selected = spinner.getSelectedItem().toString();
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 // your code here
-                String selected = spinner.getSelectedItem().toString();
+                selected = spinner.getSelectedItem().toString();
                 for(int i=0;i<rfid.size();i++)
                 {
                     if(rfid.get(i).getId().equals(selected))
@@ -82,6 +84,7 @@ public class AddNew extends AppCompatActivity {
                 rfidEntity.setBookName(bookname.getText().toString());
                 rfidEntity.setInBag(inbag);
                 RFIDUtility rfidUtility = new RFIDUtility();
+                System.out.println("selected"+selected);
                 rfidUtility.addRFIDEntity(selected,rfidEntity);
             }
         });

@@ -18,7 +18,7 @@
             android:id="@+id/inbag"
             android:text="0"
             android:textSize="30dp"
-            android:layout_toRightOf="@+id/bookname"
-            android:layout_marginLeft="250dp"/>
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"/>
 
 </RelativeLayout>
