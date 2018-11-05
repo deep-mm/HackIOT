@@ -32,10 +32,14 @@ public class BagAdapter extends RecyclerView.Adapter<BagAdapter.MyViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.bookname.setText(rfid.get(position).getBookName().toString());
+        String text;
+        if(rfid.get(position).getInBag().toString().equals("0"))
+            text = "Not in bag";
 
+        else
+            text = "In bag";
 
-
-       holder.inbag.setText(rfid.get(position).getInBag().toString());
+        holder.inbag.setText(text);
     }
 
 

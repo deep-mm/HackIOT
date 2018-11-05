@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         RFIDEntity rfidEntity = new RFIDEntity("123456","Maths",0);
         rfidUtility.addRFIDEntity("123456",rfidEntity);
 
-        WeatherDataUtility weatherDataUtility = new WeatherDataUtility();
+        /*WeatherDataUtility weatherDataUtility = new WeatherDataUtility();
         WeatherDataEntity weatherDataEntity = new WeatherDataEntity("10","20");
         weatherDataUtility.addWeatherData("Today",weatherDataEntity);
         weatherDataUtility.setOnWeatherDataEntityChangeListener(new OnWeatherDataEntityChangeListener() {
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
             public void OnDataChenged(List<WeatherDataEntity> newWeatherDataEntities) {
                 System.out.println("xxxxx weather: "+newWeatherDataEntities);
             }
-        });
+        });*/
 
 
 

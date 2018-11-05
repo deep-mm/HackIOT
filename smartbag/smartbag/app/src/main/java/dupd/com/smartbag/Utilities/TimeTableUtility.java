@@ -8,6 +8,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import dupd.com.smartbag.Entities.RFIDEntity;
@@ -29,8 +30,14 @@ public class TimeTableUtility {
             valueEventListener = new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    if(onTimeTableEntityChangeListener!=null)
-                        onTimeTableEntityChangeListener.OnDataChenged(timeTableEntities);
+                    timeTableEntities.clear();
+                    Iterator<DataSnapshot> iEEIterables = dataSnapshot.getChildren().iterator();
+                    while(iEEIterables.hasNext()){
+                        DataSnapshot temp = iEEIterables.next();
+                        TimeTableEntity timeTableEntity = temp.getValue(TimeTableEntity.class);
+                        timeTableEntities.add(timeTableEntity);
+                    }
+                    onTimeTableEntityChangeListener.OnDataChenged(timeTableEntities);
                 }
 
                 @Override

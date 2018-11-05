@@ -8,6 +8,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import dupd.com.smartbag.Entities.RFIDEntity;
@@ -27,8 +28,15 @@ public class RFIDUtility {
             valueEventListener = new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    if(onRFIDEntityChangeListener!=null)
-                        onRFIDEntityChangeListener.OnDataChenged(rfidEntities);
+                    rfidEntities = new ArrayList<>();
+                    rfidEntities.clear();
+                    Iterator<DataSnapshot> iEEIterables = dataSnapshot.getChildren().iterator();
+                    while(iEEIterables.hasNext()){
+                        DataSnapshot temp = iEEIterables.next();
+                        RFIDEntity rfidEntity = temp.getValue(RFIDEntity.class);
+                        rfidEntities.add(rfidEntity);
+                    }
+                    onRFIDEntityChangeListener.OnDataChenged(rfidEntities);
                 }
 
                 @Override

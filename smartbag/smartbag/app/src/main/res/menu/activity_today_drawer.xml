@@ -9,10 +9,6 @@
             android:icon="@mipmap/today"
             android:title="Today" />
         <item
-            android:id="@+id/timetable"
-            android:icon="@drawable/timetable"
-            android:title="TimeTable" />
-        <item
             android:id="@+id/newBook"
             android:icon="@drawable/addnew"
             android:title="Add New Book" />

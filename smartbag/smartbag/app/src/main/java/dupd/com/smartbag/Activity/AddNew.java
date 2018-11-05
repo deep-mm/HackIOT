@@ -1,5 +1,6 @@
 package dupd.com.smartbag.Activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -26,6 +27,7 @@ public class AddNew extends AppCompatActivity {
     int inbag;
     String[] arraySpinner;
     List<RFIDEntity> rfid = new ArrayList<RFIDEntity>();
+    private RFIDUtility rfidUtility;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +37,8 @@ public class AddNew extends AppCompatActivity {
 
         bookname = findViewById(R.id.bookname);
         submit = findViewById(R.id.confirm);
-        new RFIDUtility().setOnRFIDEntityChangeListener(new OnRFIDEntityChangeListener() {
+        rfidUtility = new RFIDUtility();
+        rfidUtility.setOnRFIDEntityChangeListener(new OnRFIDEntityChangeListener() {
             @Override
             public void OnDataChenged(List<RFIDEntity> newRFIDEntity) {
                 rfid =newRFIDEntity;
@@ -86,9 +89,11 @@ public class AddNew extends AppCompatActivity {
                 rfidEntity.setId(selected);
                 rfidEntity.setBookName(bookname.getText().toString());
                 rfidEntity.setInBag(inbag);
-                RFIDUtility rfidUtility = new RFIDUtility();
                 System.out.println("selected"+selected);
                 rfidUtility.addRFIDEntity(selected,rfidEntity);
+                rfidUtility.removeUpdating();
+                Intent intent = new Intent(getApplicationContext(),TodayActivity.class);
+                startActivity(intent);
             }
         });
 

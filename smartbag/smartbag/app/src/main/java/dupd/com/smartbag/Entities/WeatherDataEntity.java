@@ -2,30 +2,30 @@ package dupd.com.smartbag.Entities;
 
 public class WeatherDataEntity {
 
-    private String Temperature;
-    private String Humidity;
+    private Double Temperature;
+    private Double Humidity;
 
-    public WeatherDataEntity(String temperature, String humidity) {
+    public Double getTemperature() {
+        return Temperature;
+    }
+
+    public void setTemperature(Double temperature) {
+        Temperature = temperature;
+    }
+
+    public Double getHumidity() {
+        return Humidity;
+    }
+
+    public void setHumidity(Double humidity) {
+        Humidity = humidity;
+    }
+
+    public WeatherDataEntity(Double temperature, Double humidity) {
         Temperature = temperature;
         Humidity = humidity;
     }
 
     public WeatherDataEntity() {
-    }
-
-    public String getTemperature() {
-        return Temperature;
-    }
-
-    public void setTemperature(String temperature) {
-        Temperature = temperature;
-    }
-
-    public String getHumidity() {
-        return Humidity;
-    }
-
-    public void setHumidity(String humidity) {
-        Humidity = humidity;
     }
 }
