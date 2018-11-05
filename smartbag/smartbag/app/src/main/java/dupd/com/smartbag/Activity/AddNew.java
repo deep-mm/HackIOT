@@ -31,7 +31,8 @@ public class AddNew extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new);
-        spinner = findViewById(R.id.spinner3);
+
+
         bookname = findViewById(R.id.bookname);
         submit = findViewById(R.id.confirm);
         new RFIDUtility().setOnRFIDEntityChangeListener(new OnRFIDEntityChangeListener() {
@@ -39,6 +40,7 @@ public class AddNew extends AppCompatActivity {
             public void OnDataChenged(List<RFIDEntity> newRFIDEntity) {
                 rfid =newRFIDEntity;
                 System.out.println("rfid"+rfid);
+                spinner = findViewById(R.id.spinner3);
                 arraySpinner = new String[rfid.size()];
                 for(int i=0;i<rfid.size();i++)
                 {
@@ -49,32 +51,33 @@ public class AddNew extends AppCompatActivity {
                         android.R.layout.simple_spinner_item, arraySpinner);
                 adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
                 spinner.setAdapter(adapter);
+                spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                        // your code here
+                        selected = spinner.getSelectedItem().toString();
+                        for(int i=0;i<rfid.size();i++)
+                        {
+                            if(rfid.get(i).getId().equals(selected))
+                            {
+                                inbag = rfid.get(i).getInBag();
+                                bookname.setText(rfid.get(i).getBookName());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parentView) {
+                        // your code here
+                    }
+
+                });
             }
         });
 
 
     //    selected = spinner.getSelectedItem().toString();
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                // your code here
-                selected = spinner.getSelectedItem().toString();
-                for(int i=0;i<rfid.size();i++)
-                {
-                    if(rfid.get(i).getId().equals(selected))
-                    {
-                        inbag = rfid.get(i).getInBag();
-                        bookname.setText(rfid.get(i).getBookName());
-                    }
-                }
-            }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-                // your code here
-            }
-
-        });
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override

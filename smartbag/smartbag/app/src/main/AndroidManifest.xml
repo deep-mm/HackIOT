@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity.TimeTable" />
-        <activity android:name=".Activity.AddNew"></activity>
+        <activity android:name=".Activity.AddNew"/>
     </application>
 
 </manifest>
