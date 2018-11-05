@@ -1,5 +1,6 @@
 package dupd.com.smartbag.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -57,7 +58,7 @@ public class TodayActivity extends AppCompatActivity
         BagAdapter adapter = new BagAdapter(rfid);
         mRecyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
-
+        RFIDUtility rfidUtility = new RFIDUtility();
         new RFIDUtility().setOnRFIDEntityChangeListener(new OnRFIDEntityChangeListener() {
             @Override
             public void OnDataChenged(List<RFIDEntity> newRFIDEntity) {
@@ -66,9 +67,9 @@ public class TodayActivity extends AppCompatActivity
                 BagAdapter adapter = new BagAdapter(rfid);
                 mRecyclerView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
+
             }
         });
-
 
 
 
@@ -104,7 +105,11 @@ public class TodayActivity extends AppCompatActivity
             // Handle the camera action
         } else if (id == R.id.timetable) {
 
-        } else if (id == R.id.add_book) {
+            Intent intent = new Intent(TodayActivity.this,TimeTable.class);
+            startActivity(intent);
+        } else if (id == R.id.newBook) {
+            Intent intent = new Intent(TodayActivity.this,AddNew.class);
+            startActivity(intent);
 
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
